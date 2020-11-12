@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019-2020 ArrowOS
+ * Copyright (C) 2019-2020 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ cc_prebuilt_library_shared {
 			srcs: ["proprietary/lib64/libantradio.so"],
 		},
 	},
-        check_elf_files: false,
 	compile_multilib: "both",
+	check_elf_files: false,
 	prefer: true,
 }
 
@@ -52,8 +52,8 @@ cc_prebuilt_library_shared {
 			srcs: ["proprietary/vendor/lib64/libMpeg4SwEncoder.so"],
 		},
 	},
-        check_elf_files: false,
 	compile_multilib: "both",
+	check_elf_files: false,
 	prefer: true,
 	soc_specific: true,
 }
@@ -72,28 +72,8 @@ cc_prebuilt_library_shared {
 			srcs: ["proprietary/vendor/lib64/libplatformconfig.so"],
 		},
 	},
-        check_elf_files: false,
 	compile_multilib: "both",
-	prefer: true,
-	soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-	name: "vendor.qti.hardware.capabilityconfigstore@1.0",
-	owner: "xiaomi",
-	strip: {
-		none: true,
-	},
-	target: {
-		android_arm: {
-			srcs: ["proprietary/vendor/lib/vendor.qti.hardware.capabilityconfigstore@1.0.so"],
-		},
-		android_arm64: {
-			srcs: ["proprietary/vendor/lib64/vendor.qti.hardware.capabilityconfigstore@1.0.so"],
-		},
-	},
-        check_elf_files: false,
-	compile_multilib: "both",
+	check_elf_files: false,
 	prefer: true,
 	soc_specific: true,
 }
@@ -112,8 +92,8 @@ cc_prebuilt_library_shared {
 			srcs: ["proprietary/product/lib64/vendor.qti.hardware.fm@1.0.so"],
 		},
 	},
-        check_elf_files: false,
 	compile_multilib: "both",
+	check_elf_files: false,
 	prefer: true,
 	product_specific: true,
 }
@@ -221,7 +201,7 @@ android_app_import {
 	name: "colorservice",
 	owner: "xiaomi",
 	apk: "proprietary/product/app/colorservice/colorservice.apk",
-	presigned: true,
+	certificate: "platform",
 	dex_preopt: {
 		enabled: false,
 	},
@@ -314,5 +294,12 @@ dex_import {
 	owner: "xiaomi",
 	jars: ["proprietary/product/framework/vendor.qti.hardware.soter-V1.0-java.jar"],
 	product_specific: true,
+}
+
+dex_import {
+	name: "qti-telephony-common",
+	owner: "xiaomi",
+	jars: ["proprietary/system_ext/framework/qti-telephony-common.jar"],
+	system_ext_specific: true,
 }
 
